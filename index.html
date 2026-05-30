@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FrostByte Store & Dashboard</title>
+<title>FrostByte - Members Area</title>
 
 <style>
 *{
@@ -52,7 +52,6 @@ border-bottom: 1px solid rgba(255,255,255,.05);
 font-size:30px;
 font-weight:700;
 color:#4cc9ff;
-cursor: pointer;
 }
 
 nav button {
@@ -72,83 +71,7 @@ background: linear-gradient(135deg,#4cc9ff,#8c52ff);
 border-color: transparent;
 }
 
-.hero{
-text-align:center;
-padding:120px 20px 60px;
-}
-
-.hero h1{
-font-size:70px;
-background:linear-gradient(90deg,#4cc9ff,#8c52ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero p{
-margin-top:15px;
-color:#b8c3d9;
-}
-
-.pricing{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
-padding:50px 8%;
-}
-
-.card{
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.1);
-border-radius:25px;
-padding:35px;
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 30px rgba(76,201,255,.25);
-}
-
-.price{
-font-size:48px;
-font-weight:bold;
-margin:15px 0;
-}
-
-.price span{
-font-size:16px;
-color:#9ca3af;
-}
-
-.features{
-list-style:none;
-margin-top:20px;
-}
-
-.features li{
-margin:12px 0;
-color:#cfd8e3;
-}
-
-.buy{
-width:100%;
-padding:15px;
-margin-top:25px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-font-size:16px;
-font-weight:700;
-color:white;
-background:linear-gradient(135deg,#4cc9ff,#8c52ff);
-}
-
-.buy:hover{
-transform:scale(1.02);
-}
-
-/* Neue Sektionen & Formulare */
+/* Sektionen */
 .page-section {
 display: none;
 padding: 60px 8%;
@@ -211,7 +134,7 @@ background:linear-gradient(135deg,#4cc9ff,#8c52ff);
 
 .btn-secondary { background:#1f2937; }
 
-/* Dashboard & Grid Layouts */
+/* Dashboard Grid */
 .dashboard-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -254,7 +177,7 @@ max-width: 80%;
 .message .user { color: #4cc9ff; font-weight: bold; font-size: 13px; }
 .message .text { margin-top: 3px; }
 
-/* Downloads List */
+/* Downloads */
 .download-list {
 margin-top: 30px;
 display: flex;
@@ -291,12 +214,16 @@ font-size: 14px;
 display: none;
 }
 
-.success{
-display:none;
-text-align:center;
-padding-top:15px;
-color:#4ade80;
-font-weight:bold;
+.toggle-text {
+text-align: center;
+margin-top: 15px;
+font-size: 14px;
+color: #94a3b8;
+}
+
+.toggle-text a {
+color: #4cc9ff;
+text-decoration: none;
 }
 
 footer{
@@ -313,163 +240,117 @@ margin-top: 50px;
 <div class="bg"></div>
 
 <header>
-    <div class="logo" onclick="showSection('shop')">FrostByte</div>
+    <div class="logo">FrostByte</div>
     <nav>
-        <button id="nav-shop" class="active" onclick="showSection('shop')">Shop</button>
-        <button id="nav-login" onclick="showSection('login')">Login</button>
+        <button id="nav-login" class="active" onclick="showSection('login')">Login</button>
         <button id="nav-dashboard" onclick="showSection('dashboard')" style="display: none;">📊 Dashboard</button>
-        <button id="nav-downloads" onclick="showSection('downloads')" style="display: none;">💾 Downloads</button>
+        <button id="nav-downloads" onclick="showSection('downloads')" style="display: none;">📦 Downloads</button>
         <button id="nav-community" onclick="showSection('community')" style="display: none;">💬 Community</button>
         <button id="nav-logout" onclick="logout()" style="display: none; border-color: #ef4444; color: #ef4444;">Logout</button>
     </nav>
 </header>
 
-<div id="shop" class="page-section active-section">
-    <section class="hero">
-        <h1>Premium Memberships</h1>
-        <p>Digitale Mitgliedschaften mit monatlicher Laufzeit.</p>
-    </section>
-
-    <section class="pricing">
-        <div class="card">
-            <h2>Basic</h2>
-            <div class="price">4.99€ <span>/ Monat</span></div>
-            <ul class="features">
-                <li>✓ Updates</li>
-                <li>✓ Community Support</li>
-                <li>✓ Sofortiger Zugang</li>
-            </ul>
-            <button class="buy" onclick="openCheckout('Basic', '4.99€')">Abonnieren</button>
-        </div>
-
-        <div class="card">
-            <h2>Premium</h2>
-            <div class="price">9.99€ <span>/ Monat</span></div>
-            <ul class="features">
-                <li>✓ Alle Funktionen</li>
-                <li>✓ Prioritäts Support</li>
-                <li>✓ Premium Updates</li>
-            </ul>
-            <button class="buy" onclick="openCheckout('Premium', '9.99€')">Abonnieren</button>
-        </div>
-
-        <div class="card">
-            <h2>Ultimate</h2>
-            <div class="price">19.99€ <span>/ Monat</span></div>
-            <ul class="features">
-                <li>✓ Voller Zugriff</li>
-                <li>✓ Premium Features</li>
-                <li>✓ Exklusive Inhalte</li>
-            </ul>
-            <button class="buy" onclick="openCheckout('Ultimate', '19.99€')">Abonnieren</button>
-        </div>
-    </section>
-</div>
-
-<div id="checkout" class="page-section flex-center">
-    <div class="box">
-        <h2>Checkout</h2>
-        <p id="selectedPlan" style="margin: 10px 0; color: #4cc9ff;"></p>
-        <input class="input" id="reg-name" placeholder="Name / Username">
-        <input class="input" id="reg-email" placeholder="E-Mail">
-        <input class="input" id="reg-password" type="password" placeholder="Passwort für Account erstellen">
-        <input class="input" placeholder="Kartennummer (Simuliert)">
-        
-        <button class="btn-primary" onclick="purchase()">Kauf & Registrierung abschließen</button>
-        <button class="btn-secondary" onclick="showSection('shop')">Zurück</button>
-        <div class="success" id="success">✓ Kauf erfolgreich! Du bist jetzt registriert und eingeloggt.</div>
-    </div>
-</div>
-
-<div id="login" class="page-section flex-center">
-    <div class="box">
+<div id="login" class="page-section flex-center active-section">
+    <div class="box" id="login-box">
         <h2>Mitglieder Login</h2>
-        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 10px;">Logge dich mit deinen Kaufdaten ein.</p>
+        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 10px;">Logge dich in deinen Account ein.</p>
         <input class="input" id="login-email" placeholder="E-Mail">
         <input class="input" id="login-password" type="password" placeholder="Passwort">
         <div class="error-msg" id="login-error">Falsche E-Mail oder Passwort!</div>
         
         <button class="btn-primary" onclick="login()">Einloggen</button>
-        <p style="text-align: center; margin-top: 15px; font-size: 14px; color: #94a3b8;">
-            Noch kein Mitglied? <a href="#" onclick="showSection('shop')" style="color: #4cc9ff;">Wähle einen Plan</a>
-        </p>
+        <p class="toggle-text">Noch keinen Account? <a href="#" onclick="toggleAuthMode(false)">Registrieren</a></p>
+    </div>
+
+    <div class="box" id="register-box" style="display: none;">
+        <h2>Account erstellen</h2>
+        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 10px;">Erstelle einen kostenlosen Zugang.</p>
+        <input class="input" id="reg-name" placeholder="Username">
+        <input class="input" id="reg-email" placeholder="E-Mail">
+        <input class="input" id="reg-password" type="password" placeholder="Passwort">
+        
+        <button class="btn-primary" onclick="register()">Registrieren & Einloggen</button>
+        <p class="toggle-text">Bereits Account? <a href="#" onclick="toggleAuthMode(true)">Zum Login</a></p>
     </div>
 </div>
 
 <div id="dashboard" class="page-section">
     <h2>Willkommen zurück, <span id="dash-username" style="color: #4cc9ff;">Mitglied</span>!</h2>
-    <p style="color: #94a3b8;">Hier ist deine aktuelle Account-Übersicht.</p>
+    <p style="color: #94a3b8;">Hier ist die System-Übersicht.</p>
 
     <div class="dashboard-grid">
-        <div class="stat-card">
-            <h3>Mitgliedschaft</h3>
-            <p id="dash-plan">Premium</p>
-        </div>
         <div class="stat-card">
             <h3>Webseite Online seit</h3>
             <p id="site-uptime">0d 0h 0m</p>
         </div>
         <div class="stat-card">
-            <h3>Account Status</h3>
-            <p style="color: #4ade80;">Aktiv</p>
+            <h3>System-Status</h3>
+            <p style="color: #4ade80;">Betriebsbereit</p>
+        </div>
+        <div class="stat-card">
+            <h3>Rang</h3>
+            <p style="font-size: 24px; color: #8c52ff; margin-top: 15px;">Premium Mitglied</p>
         </div>
     </div>
 </div>
 
 <div id="downloads" class="page-section">
-    <h2>Mitglieder Downloads</h2>
-    <p style="color: #94a3b8;">Exklusive Tools, Scripts und Templates für deine gewählte Stufe.</p>
+    <h2>📦 Exklusive Downloads</h2>
+    <p style="color: #94a3b8;">Verfügbare Tools, Scripts und Vorlagen.</p>
 
     <div class="download-list">
         <div class="download-item">
             <div>
-                <h3>FrostByte Optimization Tool v1.4</h3>
-                <p style="color: #94a3b8; font-size: 14px;">Erreicht maximale Performance mit einem Klick.</p>
+                <h3>FrostByte Tools v1.4 (.exe)</h3>
+                <p style="color: #94a3b8; font-size: 14px;">Optimierungs-Werkzeuge zur Systembeschleunigung.</p>
             </div>
-            <a href="#" class="download-btn" onclick="alert('Download startet... (Simuliert)')">Download .exe</a>
+            <a href="#" class="download-btn" onclick="alert('Download gestartet... (Simuliert)')">Download</a>
         </div>
         <div class="download-item">
             <div>
-                <h3>Premium Portfolio HTML Template</h3>
-                <p style="color: #94a3b8; font-size: 14px;">Modernes, animiertes Design für Entwickler.</p>
+                <h3>Premium Portfolio Web-Template (.zip)</h3>
+                <p style="color: #94a3b8; font-size: 14px;">Modernes HTML/CSS Dashboard Design.</p>
             </div>
-            <a href="#" class="download-btn" onclick="alert('Download startet... (Simuliert)')">Download .zip</a>
+            <a href="#" class="download-btn" onclick="alert('Download gestartet... (Simuliert)')">Download</a>
         </div>
         <div class="download-item">
             <div>
-                <h3>Automation Python Scripts</h3>
-                <p style="color: #94a3b8; font-size: 14px;">Sammlung nützlicher Scripts für Social Media Bots.</p>
+                <h3>Automation Python Scripts (.py)</h3>
+                <p style="color: #94a3b8; font-size: 14px;">Skripte zur Automatisierung alltäglicher Webaufgaben.</p>
             </div>
-            <a href="#" class="download-btn" onclick="alert('Download startet... (Simuliert)')">Download .py</a>
+            <a href="#" class="download-btn" onclick="alert('Download gestartet... (Simuliert)')">Download</a>
         </div>
     </div>
 </div>
 
 <div id="community" class="page-section">
-    <h2>Live Community Chat</h2>
-    <p style="color: #94a3b8;">Tausche dich live mit anderen FrostByte-Mitgliedern aus.</p>
+    <h2>💬 Interner Live-Chat</h2>
+    <p style="color: #94a3b8;">Diskutiere mit anderen Mitgliedern in Echtzeit.</p>
 
     <div class="chat-box" id="chat-box">
-        <div class="message"><div class="user">Admin_Alex</div><div class="text">Willkommen im exklusiven FrostByte Netzwerk! 🚀</div></div>
-        <div class="message"><div class="user">CryptoGamer</div><div class="text">Das neue Optimization Tool läuft extrem gut, danke dafür! 🙌</div></div>
+        <div class="message"><div class="user">Admin_Alex</div><div class="text">Willkommen im Netzwerk! Die neuen Skripte sind online. 🚀</div></div>
+        <div class="message"><div class="user">User_X</div><div class="text">Das Portfolio Template sieht extrem clean aus. Danke! 🔥</div></div>
     </div>
 
     <div style="display: flex; gap: 10px; margin-top: 15px;">
-        <input class="input" id="chat-input" placeholder="Schreibe eine Nachricht..." style="margin: 0;" onkeypress="if(event.key === 'Enter') sendMsg()">
+        <input class="input" id="chat-input" placeholder="Nachricht schreiben..." style="margin: 0;" onkeypress="if(event.key === 'Enter') sendMsg()">
         <button class="btn-primary" style="margin: 0; width: auto; padding: 0 30px;" onclick="sendMsg()">Senden</button>
     </div>
 </div>
 
 <footer>
-    © 2026 FrostByte Store
+    © 2026 FrostByte
 </footer>
 
 <script>
-// Startdatum der Webseite (Uptime-Zähler)
+// Startdatum für den Uptime-Zähler (Hier Datum anpassen, wann deine Seite startete)
 const siteStartDate = new Date("2026-01-01T00:00:00");
 
-// Globale Variablen für Checkout-Zwischenspeicher
-let currentSelectedPlan = "";
+// Wechsel zwischen Login und Registrierung
+function toggleAuthMode(showLogin) {
+    document.getElementById('login-box').style.display = showLogin ? 'block' : 'none';
+    document.getElementById('register-box').style.display = showLogin ? 'none' : 'block';
+}
 
 // Seitenwechsel-Logik
 function showSection(sectionId) {
@@ -483,48 +364,35 @@ function showSection(sectionId) {
     if(navBtn) navBtn.classList.add('active');
 }
 
-// Checkout öffnen
-function openCheckout(plan, price){
-    currentSelectedPlan = plan;
-    showSection('checkout');
-    document.getElementById("selectedPlan").innerHTML = "<b>" + plan + " Plan</b> – " + price;
-}
-
-// Kauf & automatische Registrierung
-function purchase(){
+// Registrierungs-Funktion
+function register() {
     const name = document.getElementById("reg-name").value;
     const email = document.getElementById("reg-email").value;
     const password = document.getElementById("reg-password").value;
 
     if(!name || !email || !password) {
-        alert("Bitte fülle alle Felder aus, um deinen Account zu erstellen!");
+        alert("Bitte fülle alle Felder aus!");
         return;
     }
 
-    // Nutzerdaten im LocalStorage speichern
-    const userData = { name, email, password, plan: currentSelectedPlan };
-    localStorage.setItem('frostbyte_user', JSON.stringify(userData));
-    localStorage.setItem('frostbyte_logged_in', 'true');
+    const userData = { name, email, password };
+    localStorage.setItem('fb_member_user', JSON.stringify(userData));
+    localStorage.setItem('fb_member_logged', 'true');
 
-    document.getElementById("success").style.display = "block";
-    
-    setTimeout(() => {
-        document.getElementById("success").style.display = "none";
-        checkLoginState();
-        showSection('dashboard');
-    }, 1500);
+    checkLoginState();
+    showSection('dashboard');
 }
 
 // Login-Funktion
 function login() {
     const email = document.getElementById("login-email").value;
     const password = document.getElementById("login-password").value;
-    const storedUser = localStorage.getItem('frostbyte_user');
+    const storedUser = localStorage.getItem('fb_member_user');
 
     if (storedUser) {
         const user = JSON.parse(storedUser);
         if (user.email === email && user.password === password) {
-            localStorage.setItem('frostbyte_logged_in', 'true');
+            localStorage.setItem('fb_member_logged', 'true');
             document.getElementById("login-error").style.display = "none";
             checkLoginState();
             showSection('dashboard');
@@ -536,20 +404,20 @@ function login() {
 
 // Logout-Funktion
 function logout() {
-    localStorage.setItem('frostbyte_logged_in', 'false');
+    localStorage.setItem('fb_member_logged', 'false');
     checkLoginState();
-    showSection('shop');
+    showSection('login');
 }
 
-// Login-Status prüfen und Menü anpassen
+// Login-Status prüfen und Menüpunkte freischalten/sperren
 function checkLoginState() {
-    const isLoggedIn = localStorage.getItem('frostbyte_logged_in') === 'true';
-    const storedUser = localStorage.getItem('frostbyte_user');
+    const isLoggedIn = localStorage.getItem('fb_member_logged') === 'true';
+    const storedUser = localStorage.getItem('fb_member_user');
 
     if (isLoggedIn && storedUser) {
         const user = JSON.parse(storedUser);
         
-        // Buttons anzeigen
+        // Navigation umschalten
         document.getElementById("nav-login").style.display = "none";
         document.getElementById("nav-dashboard").style.display = "inline-block";
         document.getElementById("nav-downloads").style.display = "inline-block";
@@ -558,9 +426,7 @@ function checkLoginState() {
         
         // Dashboard befüllen
         document.getElementById("dash-username").innerText = user.name;
-        document.getElementById("dash-plan").innerText = user.plan;
     } else {
-        // Buttons verstecken
         document.getElementById("nav-login").style.display = "inline-block";
         document.getElementById("nav-dashboard").style.display = "none";
         document.getElementById("nav-downloads").style.display = "none";
@@ -569,13 +435,13 @@ function checkLoginState() {
     }
 }
 
-// Chat-Nachricht senden
+// Chat-Nachrichten senden
 function sendMsg() {
     const input = document.getElementById("chat-input");
     const text = input.value.trim();
     if(!text) return;
 
-    const storedUser = JSON.parse(localStorage.getItem('frostbyte_user'));
+    const storedUser = JSON.parse(localStorage.getItem('fb_member_user'));
     const username = storedUser ? storedUser.name : "Mitglied";
 
     const chatBox = document.getElementById("chat-box");
@@ -585,10 +451,10 @@ function sendMsg() {
     
     chatBox.appendChild(msgDiv);
     input.value = "";
-    chatBox.scrollTop = chatBox.scrollHeight; // Auto-Scroll nach unten
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Uptime Dashboard-Zähler (Live)
+// Live Uptime-Zähler
 function updateUptime() {
     const now = new Date();
     const diff = now - siteStartDate;
@@ -597,10 +463,13 @@ function updateUptime() {
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
-    document.getElementById("site-uptime").innerText = `${days}d ${hours}h ${minutes}m`;
+    const uptimeElement = document.getElementById("site-uptime");
+    if(uptimeElement) {
+        uptimeElement.innerText = `${days}d ${hours}h ${minutes}m`;
+    }
 }
 
-// Initialisierungen beim Laden
+// Beim Seitenstart ausführen
 window.onload = function() {
     checkLoginState();
     updateUptime();
