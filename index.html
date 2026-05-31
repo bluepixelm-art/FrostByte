@@ -5,7 +5,7 @@ html = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub Release Download</title>
+<title>FrostByte Download</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
 body{background:#050816;color:white;display:flex;justify-content:center;align-items:center;min-height:100vh;overflow:hidden}
@@ -57,7 +57,7 @@ border-radius:12px;
 text-decoration:none;
 font-weight:bold;
 color:white;
-background:linear-gradient(135deg,#238636,#2ea043); /* GitHub Green Gradient */
+background:linear-gradient(135deg,#238636,#2ea043);
 box-shadow: 0 4px 15px rgba(46,160,67,.4);
 transition: transform 0.2s, filter 0.2s;
 }
@@ -77,17 +77,19 @@ color: #6e7681;
 <div class="bg"></div>
 <div class="card">
 <div class="github-icon"><i class="fa-brands fa-github"></i></div>
-<h1>GitHub Release</h1>
-<div class="tag">latest v1.0.0</div>
-<p>Lade die neueste Version der Anwendung (.jar) direkt aus dem GitHub Repository herunter.</p>
-<a class="download" href="https://github.com/DEIN-BENUTZERNAME/DEIN-REPOSITORY/releases/latest/download/deine-datei.jar">
+<h1>FrostByte</h1>
+<div class="tag">Direkter Download</div>
+<p>Klicke auf den Button, um die neueste Version von <strong>frostbyte.jar</strong> direkt von GitHub herunterzuladen.</p>
+
+<a class="download" href="https://raw.githubusercontent.com/bluepixelm-art/FrostByte/main/frostbyte.jar" download>
 <i class="fa-solid fa-download" style="margin-right:8px;"></i> .JAR installieren
 </a>
-<div class="footer-text">Benötigt Java 17 oder neuer</div>
+
+<div class="footer-text">Benötigt Java zum Ausführen</div>
 </div>
 </body>
 </html>"""
 
 path = "/mnt/data/download-page.html"
 Path(path).write_text(html, encoding="utf-8")
-print(f"Datei erfolgreich gespeichert unter: {path}")
+print(f"Datei erfolgreich aktualisiert unter: {path}")
