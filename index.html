@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrostByte Store</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,Arial,sans-serif;
+}
+
+body{
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-1;
+background:
+radial-gradient(circle at 20% 20%,rgba(0,150,255,.25),transparent 30%),
+radial-gradient(circle at 80% 50%,rgba(140,0,255,.25),transparent 30%),
+radial-gradient(circle at 50% 90%,rgba(0,255,200,.15),transparent 30%);
+animation:bg 12s infinite alternate ease-in-out;
+}
+
+@keyframes bg{
+from{transform:scale(1);}
+to{transform:scale(1.15);}
+}
+
+header{
+padding:25px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#4cc9ff;
+}
+
+.hero{
+text-align:center;
+padding:120px 20px 60px;
+}
+
+.hero h1{
+font-size:70px;
+background:linear-gradient(90deg,#4cc9ff,#8c52ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+margin-top:15px;
+color:#b8c3d9;
+}
+
+.pricing{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+padding:50px 8%;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.1);
+border-radius:25px;
+padding:35px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(76,201,255,.25);
+}
+
+.price{
+font-size:48px;
+font-weight:bold;
+margin:15px 0;
+}
+
+.price span{
+font-size:16px;
+color:#9ca3af;
+}
+
+.features{
+list-style:none;
+margin-top:20px;
+}
+
+.features li{
+margin:12px 0;
+color:#cfd8e3;
+}
+
+.buy{
+width:100%;
+padding:15px;
+margin-top:25px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+font-weight:700;
+color:white;
+background:linear-gradient(135deg,#4cc9ff,#8c52ff);
+}
+
+.buy:hover{
+transform:scale(1.02);
+}
+
+.checkout{
+display:none;
+min-height:100vh;
+justify-content:center;
+align-items:center;
+padding:30px;
+}
+
+.checkout-box{
+width:500px;
+max-width:95%;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.1);
+padding:40px;
+border-radius:25px;
+animation:fade .5s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.checkout-box h2{
+margin-bottom:15px;
+}
+
+.input{
+width:100%;
+padding:15px;
+margin-top:12px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+border-radius:12px;
+color:white;
+}
+
+.pay{
+width:100%;
+margin-top:20px;
+padding:15px;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+background:linear-gradient(135deg,#4cc9ff,#8c52ff);
+color:white;
+cursor:pointer;
+}
+
+.back{
+width:100%;
+margin-top:10px;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#1f2937;
+color:white;
+cursor:pointer;
+}
+
+.success{
+display:none;
+text-align:center;
+padding-top:15px;
+color:#4ade80;
+font-weight:bold;
+}
+
+footer{
+padding:30px;
+text-align:center;
+color:#94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div id="shop">
+
+<header>
+<div class="logo">FrostByte</div>
+</header>
+
+<section class="hero">
+<h1>Premium Memberships</h1>
+<p>Digitale Mitgliedschaften mit monatlicher Laufzeit.</p>
+</section>
+
+<section class="pricing">
+
+<div class="card">
+<h2>Basic</h2>
+<div class="price">4.99€ <span>/ Monat</span></div>
+
+<ul class="features">
+<li>✓ Updates</li>
+<li>✓ Community Support</li>
+<li>✓ Sofortiger Zugang</li>
+</ul>
+
+<button class="buy" onclick="openCheckout('Basic', '4.99€')">
+Abonnieren
+</button>
+</div>
+
+<div class="card">
+<h2>Premium</h2>
+<div class="price">9.99€ <span>/ Monat</span></div>
+
+<ul class="features">
+<li>✓ Alle Funktionen</li>
+<li>✓ Prioritäts Support</li>
+<li>✓ Premium Updates</li>
+</ul>
+
+<button class="buy" onclick="openCheckout('Premium', '9.99€')">
+Abonnieren
+</button>
+</div>
+
+<div class="card">
+<h2>Ultimate</h2>
+<div class="price">19.99€ <span>/ Monat</span></div>
+
+<ul class="features">
+<li>✓ Voller Zugriff</li>
+<li>✓ Premium Features</li>
+<li>✓ Exklusive Inhalte</li>
+</ul>
+
+<button class="buy" onclick="openCheckout('Ultimate', '19.99€')">
+Abonnieren
+</button>
+</div>
+
+</section>
+
+<footer>
+© 2025 FrostByte Store
+</footer>
+
+</div>
+
+<div class="checkout" id="checkout">
+
+<div class="checkout-box">
+
+<h2>Checkout</h2>
+
+<p id="selectedPlan"></p>
+
+<input class="input" placeholder="Name">
+<input class="input" placeholder="E-Mail">
+<input class="input" placeholder="Kartennummer">
+
+<button class="pay" onclick="purchase()">
+Kauf abschließen
+</button>
+
+<button class="back" onclick="goBack()">
+Zurück
+</button>
+
+<div class="success" id="success">
+✓ Testkauf erfolgreich abgeschlossen!
+</div>
+
+</div>
+
+</div>
+
+<script>
+function openCheckout(plan, price){
+document.getElementById("shop").style.display="none";
+document.getElementById("checkout").style.display="flex";
+document.getElementById("selectedPlan").innerHTML=
+"<b>"+plan+"</b><br>"+price+" pro Monat";
+}
+
+function goBack(){
+document.getElementById("checkout").style.display="none";
+document.getElementById("shop").style.display="block";
+}
+
+function purchase(){
+document.getElementById("success").style.display="block";
+}
+</script>
+
+</body>
+</html>
